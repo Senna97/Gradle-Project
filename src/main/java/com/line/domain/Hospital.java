@@ -10,7 +10,7 @@ public class Hospital {
     private String subdivision;
 
     public Hospital(String id, String address, String district, String category, String emergencyRoom, String name, String subdivision) {
-        this.id = id;
+        this.id = id.replaceAll("\"", "");
         this.address = address;
         this.district = district;
         this.category = category;
