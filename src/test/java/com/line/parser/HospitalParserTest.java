@@ -33,5 +33,6 @@ class HospitalParserTest {
         Assertions.assertEquals("C", hospital.getCategory());
         Assertions.assertEquals("2", hospital.getEmergencyRoom());
         Assertions.assertEquals("가산기대찬의원", hospital.getName());
+        Assertions.assertEquals("내과", hospital.getSubdivision());
     }
 }

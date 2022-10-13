@@ -52,7 +52,7 @@ public class Main {
             strings.add(hospital.getCategory() + "','");
             strings.add(hospital.getEmergencyRoom() + "','");
             strings.add(hospital.getName() + "','");
-            strings.add("null')");
+            strings.add(hospital.getSubdivision() + "')");
             strings.add(",\n");
         }
         strings.remove(strings.size() - 1);
