@@ -10,13 +10,13 @@ public class Hospital {
     private String subdivision;
 
     public Hospital(String id, String address, String district, String category, String emergencyRoom, String name, String subdivision) {
-        this.id = id.replaceAll("\"", "");
-        this.address = address.replaceAll("\"", "");
-        this.district = district.replaceAll("\"", "");
-        this.category = category.replaceAll("\"", "");
-        this.emergencyRoom = emergencyRoom.replaceAll("\"", "");
-        this.name = name.replaceAll("\"", "");
-        this.subdivision = subdivision.replaceAll("\"", "");
+        this.id = id;
+        this.address = address;
+        this.district = district;
+        this.category = category;
+        this.emergencyRoom = emergencyRoom;
+        this.name = name;
+        this.subdivision = subdivision;
     }
 
     public String getId() {
