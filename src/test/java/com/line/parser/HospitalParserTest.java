@@ -10,56 +10,16 @@ class HospitalParserTest {
 
 
     @Test
-    @DisplayName("Id 가 파싱이 잘 되는지")
-    void idParsing() {
+    @DisplayName("Parsing doing well")
+    void parsingWell() {
         HospitalParser hospitalParser = new HospitalParser();
 
         Hospital hospital = hospitalParser.parse(this.line1);
         Assertions.assertEquals("A1120837", hospital.getId());
-    }
-
-    @Test
-    @DisplayName("address 가 파싱이 잘 되는지")
-    void addressParsing() {
-        HospitalParser hospitalParser = new HospitalParser();
-
-        Hospital hospital = hospitalParser.parse(this.line1);
         Assertions.assertEquals("서울특별시 금천구 벚꽃로 286 삼성리더스타워 111~114호 (가산동)", hospital.getAddress());
-    }
-
-    @Test
-    @DisplayName("district 가 파싱이 잘 되는지")
-    void districtParsing() {
-        HospitalParser hospitalParser = new HospitalParser();
-
-        Hospital hospital = hospitalParser.parse(this.line1);
         Assertions.assertEquals("서울특별시 금천구", hospital.getDistrict());
-    }
-
-    @Test
-    @DisplayName("category 가 파싱이 잘 되는지")
-    void categoryParsing() {
-        HospitalParser hospitalParser = new HospitalParser();
-
-        Hospital hospital = hospitalParser.parse(this.line1);
         Assertions.assertEquals("C", hospital.getCategory());
-    }
-
-    @Test
-    @DisplayName("emergencyRoom 이 파싱이 잘 되는지")
-    void emergencyRoomParsing() {
-        HospitalParser hospitalParser = new HospitalParser();
-
-        Hospital hospital = hospitalParser.parse(this.line1);
         Assertions.assertEquals("2", hospital.getEmergencyRoom());
-    }
-
-    @Test
-    @DisplayName("name 이 파싱이 잘 되는지")
-    void nameRoomParsing() {
-        HospitalParser hospitalParser = new HospitalParser();
-
-        Hospital hospital = hospitalParser.parse(this.line1);
         Assertions.assertEquals("가산기대찬의원", hospital.getName());
     }
 }
