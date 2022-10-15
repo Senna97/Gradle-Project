@@ -1,13 +1,13 @@
 package com.line.domain;
 
 public class Hospital {
-    private String id; // splitted[0]
-    private String address; // splitted[1]
-    private String district; // splitted[1] - 수정
-    private String category; // splitted[2]
-    private String emergencyRoom; // splitted[6]
-    private String name; // splitted[10]
-    private String subdivision; // splitted[7]
+    private final String id;
+    private final String address;
+    private final String district;
+    private final String category;
+    private final String emergencyRoom;
+    private final String name;
+    private final String subdivision;
 
     public Hospital(String id, String address, String district, String category, String emergencyRoom, String name, String subdivision) {
         this.id = id;
@@ -19,22 +19,22 @@ public class Hospital {
         this.subdivision = subdivision;
     }
 
+    public String getSqlInsertQuery() {
+        String sql = String.format("('%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+                this.id, this.address, this.district, this.category, this.emergencyRoom, this.name, this.subdivision);
+        return sql;
+    }
+
     public String getId() {
         return id;
     }
 
     public String getAddress() {
-        if (address.contains("'")) {
-            address = address.replace("'", "\\'");
-        }
         return address;
     }
 
     public String getDistrict() {
-        String[] strings = new String[20];
-        strings = district.split(" ");
-
-        return strings[0] + " " + strings[1];
+        return district;
     }
 
     public String getCategory() {
@@ -50,14 +50,6 @@ public class Hospital {
     }
 
     public String getSubdivision() {
-        String[] input = new String[]{"가정의학과", "내과", "소아과", "정신과", "피부과", "비뇨기과", "산부인과", "성형외과", "안과", "외과", "이비인후과", "정형외과", "치과", "소아치과", "한의원", "한방병원"};
-        for (int i = 0; i < input.length; i++) {
-            if (name.contains(input[i])) {
-                return input[i];
-            } else if (subdivision.contains(input[i])) {
-                return input[i];
-            }
-        }
-        return null;
+        return subdivision;
     }
 }

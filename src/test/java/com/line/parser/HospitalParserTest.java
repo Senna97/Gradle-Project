@@ -31,8 +31,17 @@ class HospitalParserTest {
         Assertions.assertEquals("서울특별시 금천구 벚꽃로 286 삼성리더스타워 111~114호 (가산동)", hospital.getAddress());
         Assertions.assertEquals("서울특별시 금천구", hospital.getDistrict());
         Assertions.assertEquals("C", hospital.getCategory());
-        Assertions.assertEquals("2", hospital.getEmergencyRoom());
+        Assertions.assertEquals("운영X", hospital.getEmergencyRoom());
         Assertions.assertEquals("가산기대찬의원", hospital.getName());
-        Assertions.assertEquals("내과", hospital.getSubdivision());
+        Assertions.assertEquals("의원", hospital.getSubdivision());
+    }
+
+    @Test
+    @DisplayName("getSqlInsertQuery() Test")
+    void makeSqlQueryTest() {
+        HospitalParser hospitalParser = new HospitalParser();
+        Hospital hospital = hospitalParser.parse(this.line);
+        String sql = "('A1120837', '서울특별시 금천구 벚꽃로 286 삼성리더스타워 111~114호 (가산동)', '서울특별시 금천구', 'C', '운영X', '가산기대찬의원', '의원')";
+        Assertions.assertEquals(sql, hospital.getSqlInsertQuery());
     }
 }
