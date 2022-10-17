@@ -18,6 +18,7 @@ public class FileController<T> {
         List<T> result = new ArrayList<>();
         BufferedReader br = new BufferedReader(new FileReader(filename));
         String str;
+
         if (isRemoveColumnName) {
             br.readLine();
         }
