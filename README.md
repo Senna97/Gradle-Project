@@ -5,4 +5,4 @@
 
 [노션으로 정리한 <서울시 병의원 위치 정보 Project>](https://www.notion.so/3ef6903f07004fad917359a8c3a53e93)
 
-# 2. 
+# 2. [Java DB 연동](https://github.com/Senna97/Gradle-Project/tree/main/src/main/java/com/dbexercise)
