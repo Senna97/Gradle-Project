@@ -8,7 +8,7 @@ public class UserDao {
 
     private ConnectionMaker connectionMaker;
 
-    public UserDao() {
+    public UserDao(AWSConnectionMaker awsConnectionMaker) {
         connectionMaker = new AWSConnectionMaker();
     }
 

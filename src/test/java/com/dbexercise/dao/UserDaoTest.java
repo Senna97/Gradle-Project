@@ -10,7 +10,7 @@ class UserDaoTest {
 
     @Test
     public void addAndGet() throws SQLException, ClassNotFoundException {
-        UserDao userDao = new UserDao();
+        UserDao userDao = new UserDaoFactory().awsUserDao();
         User user = new User();
         user.setId("0");
         user.setName("seohyeon");
