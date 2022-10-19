@@ -17,6 +17,12 @@ public class Stack01 {
         this.pointer++;
     }
 
+    public int pop() {
+        int value = this.arr[this.pointer-1];
+        this.pointer--;
+        return value;
+    }
+
     public int[] getArr() {
         return arr;
     }
