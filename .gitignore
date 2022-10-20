@@ -6,7 +6,4 @@
 
 .idea/
 gradle/
-*.gradle
-gradlew
-*.bat
 *.sql
