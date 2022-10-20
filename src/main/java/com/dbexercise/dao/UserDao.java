@@ -13,30 +13,73 @@ public class UserDao {
         connectionMaker = new AWSConnectionMaker();
     }
 
-    public void deleteAll() throws SQLException, ClassNotFoundException {
-        Connection con = connectionMaker.makeConnection();
-
-        PreparedStatement ps = con.prepareStatement("DELETE FROM `likelion-db`.users");
-
-        ps.executeUpdate();
-
-        ps.close();
-        con.close();
+    public void deleteAll() {
+        Connection con = null;
+        PreparedStatement ps = null;
+        try {
+            con = connectionMaker.makeConnection();
+            ps = con.prepareStatement("DELETE FROM `likelion-db`.users");
+            ps.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
     }
 
-    public int getCount() throws SQLException, ClassNotFoundException {
-        Connection con = connectionMaker.makeConnection();
-
-        PreparedStatement ps = con.prepareStatement("SELECT COUNT(*) FROM `likelion-db`.users");
-
-        ResultSet rs = ps.executeQuery();
-        rs.next();
-        int count = rs.getInt(1);
-
-        rs.close();
-        ps.close();
-        con.close();
-
+    public int getCount() {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        int count = 0;
+        try {
+            con = connectionMaker.makeConnection();
+            ps = con.prepareStatement("SELECT COUNT(*) FROM `likelion-db`.users");
+            rs = ps.executeQuery();
+            rs.next();
+            count = rs.getInt(1);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
         return count;
     }
 
