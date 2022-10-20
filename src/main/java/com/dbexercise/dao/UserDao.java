@@ -12,6 +12,31 @@ public class UserDao {
         connectionMaker = new AWSConnectionMaker();
     }
 
+    public void deleteAll() throws SQLException, ClassNotFoundException {
+        Connection con = connectionMaker.makeConnection();
+
+        PreparedStatement ps = con.prepareStatement("DELETE FROM `likelion-db`.users");
+
+        ps.executeUpdate();
+
+        ps.close();
+        con.close();
+    }
+
+    public void getCount() throws SQLException, ClassNotFoundException {
+        Connection con = connectionMaker.makeConnection();
+
+        PreparedStatement ps = con.prepareStatement("COUNT(*) FROM `likelion-db`.users");
+
+        ResultSet rs = ps.executeQuery();
+        rs.next();
+        int count = rs.getInt(1);
+
+        rs.close();
+        ps.close();
+        con.close();
+    }
+
     public void add(User user) throws ClassNotFoundException, SQLException {
         Connection con = connectionMaker.makeConnection();
 

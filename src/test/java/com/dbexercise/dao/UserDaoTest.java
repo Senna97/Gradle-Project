@@ -22,7 +22,7 @@ class UserDaoTest {
     public void addAndGet() throws SQLException, ClassNotFoundException {
         UserDao userDao = context.getBean("awsUserDao", UserDao.class);
         User user = new User();
-        user.setId("0");
+        user.setId("2");
         user.setName("seohyeon");
         user.setPassword("0000");
         userDao.add(user);
