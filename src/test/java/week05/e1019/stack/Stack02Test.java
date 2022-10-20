@@ -30,7 +30,7 @@ class Stack02Test {
     }
 
     @Test
-    @DisplayName("pushAndPop이 잘 되는지")
+    @DisplayName("pushAndPop 이 잘 되는지")
     void pushAndPop() {
         Stack02 stack02 = new Stack02();
         stack02.push(10);
