@@ -1,12 +1,15 @@
 package week05.e1019.stack;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.EmptyStackException;
+import java.util.Stack;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class Stack02Test {
+    Stack02 stack02 = new Stack02();
 
     @BeforeEach
     void setUp() {
@@ -18,9 +21,7 @@ class Stack02Test {
     }
 
     @Test
-    @DisplayName("push 가 잘 되는지")
     void push() {
-        Stack02 stack02 = new Stack02();
         stack02.push(10);
         stack02.push(20);
         Integer[] arr = stack02.getArr();
@@ -30,14 +31,32 @@ class Stack02Test {
     }
 
     @Test
-    @DisplayName("pushAndPop 이 잘 되는지")
     void pushAndPop() {
-        Stack02 stack02 = new Stack02();
         stack02.push(10);
         stack02.push(20);
 
         assertEquals(20, stack02.pop());
         assertEquals(10, stack02.pop());
         // st.pop() 비어있으면?
+        assertThrows(EmptyStackException.class, () -> {
+            stack02.pop();
+        });
+    }
+
+    @Test
+    void isEmpty() {
+        assertTrue(stack02.isEmpty());
+        stack02.push(10);
+        assertFalse(stack02.isEmpty());
+        stack02.pop();
+        assertTrue(stack02.isEmpty());
+    }
+
+    @Test
+    void realStack() {
+        Stack<Integer> stack = new Stack<>();
+        assertThrows(EmptyStackException.class, () -> {
+            stack02.pop();
+        });
     }
 }
