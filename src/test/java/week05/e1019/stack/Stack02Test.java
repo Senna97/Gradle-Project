@@ -51,6 +51,16 @@ class Stack02Test {
         stack02.pop();
         assertTrue(stack02.isEmpty());
     }
+    @Test
+    void peek() {
+        // stack 이 비어있는데 peek()을 하면?
+        assertThrows(EmptyStackException.class, () -> {
+            stack02.peek();
+        });
+        stack02.push(10);
+        int peeked = stack02.peek();
+        assertEquals(10, peeked);
+    }
 
     @Test
     void realStack() {
