@@ -18,7 +18,7 @@ public class UserDao {
         PreparedStatement ps = null;
         try {
             con = connectionMaker.makeConnection();
-            ps = con.prepareStatement("DELETE FROM `likelion-db`.users");
+            ps = new DeleteAllStrategy().makePreparedStatement(con);
             ps.executeUpdate();
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
