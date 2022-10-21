@@ -13,17 +13,15 @@ public class UserDao {
         connectionMaker = new AWSConnectionMaker();
     }
 
-    public void deleteAll() {
+    public void jdbcContextWithStatementStrategy(StatementStrategy stmt) throws SQLException, ClassNotFoundException {
         Connection con = null;
         PreparedStatement ps = null;
         try {
             con = connectionMaker.makeConnection();
-            ps = new DeleteAllStrategy().makePreparedStatement(con);
+            ps = stmt.makePreparedStatement(con);
             ps.executeUpdate();
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } catch (SQLException | ClassNotFoundException e) {
+            throw e;
         } finally {
             if (ps != null) {
                 try {
@@ -40,6 +38,11 @@ public class UserDao {
                 }
             }
         }
+    }
+
+    public void deleteAll() throws SQLException, ClassNotFoundException {
+        Connection con = null;
+        jdbcContextWithStatementStrategy(new DeleteAllStrategy());
     }
 
     public int getCount() {
