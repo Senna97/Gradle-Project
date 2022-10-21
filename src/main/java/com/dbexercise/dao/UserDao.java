@@ -87,7 +87,7 @@ public class UserDao {
         Connection con = connectionMaker.makeConnection();
 
         // 쿼리 작성
-        PreparedStatement ps = con.prepareStatement("INSERT INTO users(id, name, password) values(?,?,?)");
+        PreparedStatement ps = new AddStrategy().makePreparedStatement(con);
         ps.setString(1, user.getId());
         ps.setString(2, user.getName());
         ps.setString(3, user.getPassword());
